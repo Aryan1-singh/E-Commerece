@@ -1,5 +1,5 @@
-import React from 'react';
-// import './Popup.css'; // Import your CSS for additional styling if needed
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface PopupProps {
   isOpen: boolean;
@@ -7,6 +7,8 @@ interface PopupProps {
   title: string;
   children: React.ReactNode;
 }
+
+
 
 const Popup: React.FC<PopupProps> = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) return null;
@@ -17,9 +19,6 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, title, children }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">{title}</h5>
-            {/* <button type="button" className="close" onClick={onClose}>
-              <span>&times;</span>
-            </button> */}
           </div>
           <div className="modal-body">
             {children}

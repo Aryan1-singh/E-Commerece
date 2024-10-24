@@ -2,18 +2,41 @@ import React, { useEffect, useState } from 'react';
 import './dashboard.css';
 import Sidebar from '../Sidebar/sidebar';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+interface Order {
+  id: number;
+  customerName: string;
+  totalQuantity: number;
+  totalPrice: number;
+}
 
 
 
 function Dashboard() {
-  const navigate = useNavigate(); // Use useNavigate here
+  const navigate = useNavigate(); 
+  const [orders, setOrders] = useState<Order[]>([]); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
 
-  const [tableData, setTableData] = useState([
-    { id: 1, customerName: 'Mark', quantity: 5, price: 35 },
-    { id: 2, customerName: 'Jacob', quantity: 10, price: 50 },
-    { id: 3, customerName: 'John', quantity: 5, price: 35 },
-    { id: 4, customerName: 'Wick', quantity: 10, price: 50 },]);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/orders');
+        setOrders(response.data); 
+      } catch (err) {
+        setError('Error fetching orders');
+      } finally {
+        setLoading(false);  
+      }
+    };
+
+    fetchOrders();  
+  }, []);
+
+ 
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -21,6 +44,18 @@ function Dashboard() {
       window.location.href = "/";
     }
   }, [navigate]);
+
+  const handleDeleteClick = async (id: number) => {
+    try {
+      const response = await axios.delete(`http://localhost:8000/orders/${id}`);
+      if (response.status === 200) {
+        setOrders(orders.filter(order => order.id !== id));
+      }
+    } catch (error) {
+      console.error('Error deleting order:', error);
+    }
+  };
+
 
   return (
     <>
@@ -33,7 +68,7 @@ function Dashboard() {
           </div>
           <div className="col-md-10">
             <div className="d-flex justify-content-end mt-5">
-              <button className="btn btn-primary" onClick={() => navigate('/order')} // Inline navigation
+              <button className="btn btn-primary " onClick={() => navigate('/order')} 
               >New Order</button>
             </div>
             <div className="d-flex justify-content-center mt-3">
@@ -46,22 +81,23 @@ function Dashboard() {
                     <th scope="col">Customer Name</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Edit</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {tableData.map((item) => (
-                    <tr key={item.id}>
-                      <th scope="row">{item.id}</th>
-                      <td>{item.customerName}</td>
-                      <td>{item.quantity}</td>
-                      <td>{item.price}</td>
-                      <td>
-                        {/* You can add Edit functionality here */}
-                        <button className="btn btn-secondary" onClick={() => navigate('/order')}>Edit</button>
-                      </td>
-                    </tr>
-                  ))}
+                {orders.map((order) => (
+                      <tr key={order.id}>
+                        <th scope="row">{order.id}</th>
+                        <td>{order.customerName}</td>
+                        <td>{order.totalQuantity}</td>
+                        <td>{order.totalPrice}</td>
+                        <td>
+                          <button className="btn" onClick={() => handleDeleteClick(order.id)}>
+                            <i className="bi bi-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
 

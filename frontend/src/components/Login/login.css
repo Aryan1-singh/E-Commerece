@@ -1,20 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
 
-.container1 {
-  background: linear-gradient(180deg, #6c757d 0%, #f8f9f9 100%);  width: 100%;
+/* .container1 {
+    background: linear-gradient(180deg, #007bff 0%, #ffffff 100%);
+
   min-height: 100vh;
   padding: 20px;
+} */
+
+.container1 {
+  background: url('../../assets/images/background.jpg') no-repeat center center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  background-blend-mode: overlay;
+  justify-content: center;
+  align-items: center;
 }
 
+
 .loginItem {
-  padding-top: 10%;
+  /* padding-top: 10%; */
   text-align: center;
 }
 
 .fontLogin {
   font-family: 'Space Grotesk', sans-serif;
-  color: #222222;
+  color: #2C3E50;
   font-size: 322%;
   font-weight: 500;
 
@@ -23,6 +36,19 @@
 .fontCommon {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
+  color: #3A536B;
+}
+
+.forgot {
+  color: #3A536B;
+  font-family: system-ui;
+}
+
+.Register {
+  cursor: pointer;
+  color: #172554;
+  font-weight: 500;
+  font-family: system-ui;
 }
 
 .textBox {
@@ -44,34 +70,56 @@
 }
 
 .loginButton {
-  background: linear-gradient(90deg, #A9A5FD 0%, #EBD75D 101.62%);
-  width: 100%;
+  background: linear-gradient(90deg, #e0edfa 0%, #0a58ca 101.62%);
+  text-align: left !important;
+  justify-content: center;
   height: 100%;
   border-color: transparent;
   color: #4E4E4E;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
-  
   font-size: 18px;
+
 }
 
 .buttonSet {
   border: 2px solid transparent;
   border-image: linear-gradient(90deg, #A9A5FD 0%, #EBD75D 101.62%);
   border-image-slice: 1;
-  width: 60%;
+  /* width: 60%; */
   background-color: transparent;
 }
-.loginSet{
-  padding-right: 48%;
+
+.loginSet {
+  /* padding-right: 48%; */
+  display: flex;
+  align-self: center !important;
   font-weight: 500;
 }
-.arrow{
-  margin-right:14px
 
+.arrow {
+  margin-right: 14px
 }
 
-/* Responsive Styles */
+.formcontrol {
+
+  display: block;
+  width: 70%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-clip: padding-box;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+
+/* 
 @media (max-width: 767px) {
   .loginItem {
     padding-top: 20%;
@@ -119,5 +167,19 @@
     width: 40%;
     margin-left: 30%;
   }
+} */
+
+.loginButton1 {
+  background-color: #0056b3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 50px;
 }
 
+.loginButton1:hover {
+  background-color: #007bff;
+}

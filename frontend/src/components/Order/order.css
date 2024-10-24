@@ -9,3 +9,15 @@
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.backicon{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.order{
+    font-size: 30px;
+    padding-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}

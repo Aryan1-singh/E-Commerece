@@ -1,29 +1,27 @@
-src/components/sidebar/sidebar.css
-
-
 .sidebar1 h2 {
-    margin-top: 0; /* Remove top margin */
+    margin-top: 0; 
 }
 
 .sidebar1 ul {
-    list-style-type: none; /* Remove bullets */
-    padding: 0; /* Remove padding */
-    cursor: pointer;
+    list-style-type: none;
+    padding: 0; 
     margin-top: 50px;
 }
 
 .sidebar1 li {
-    margin: 10px 0; /* Space between items */
+    margin: 10px 0; 
+    cursor: pointer;
+
 }
 
 
 .sidebar1{
-    background-color: #333;
-    color: white;
-    height: 100%; /* Full height */
-    position: fixed; /* Keep it fixed on the side */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    padding: 20px; /* Add some padding */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
+    background-color: #3A536B   ;
+    color: #ffff;
+    height: 100%; 
+    position: fixed; 
+    padding: 20px; }
+
+.logoutbtn{
+    color: #ffff;
 }
